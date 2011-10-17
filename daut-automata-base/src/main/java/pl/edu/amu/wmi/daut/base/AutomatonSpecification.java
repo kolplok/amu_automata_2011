@@ -64,4 +64,28 @@ abstract class AutomatonSpecification {
      * Zwraca true, wgdy stan jest stanem końcowym.
      */
     public abstract boolean isFinal(State state);
+    
+    public boolean isFull(String alphabet) {
+        for (State state : allStates) {
+            for (OutgoingTransition transition : allOutgoingTransitions(stan)) {
+                for (int i = 0; i<=alphabet.length(); i++) {
+                    if (transition.TransitionLabel != alphabet[i]) +++++++++
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+        
+    }
 };
