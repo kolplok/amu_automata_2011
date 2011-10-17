@@ -69,16 +69,7 @@ abstract class AutomatonSpecification {
         for (State state : allStates) {
             for (OutgoingTransition transition : allOutgoingTransitions(stan)) {
                 for (int i = 0; i<=alphabet.length(); i++) {
-                    if (transition.TransitionLabel != alphabet[i]) +++++++++
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    if (transition.TransitionLabel != alphabet[i])
                     {
                         return false;
                     }
