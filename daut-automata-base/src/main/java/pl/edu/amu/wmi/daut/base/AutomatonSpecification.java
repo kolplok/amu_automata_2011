@@ -1,7 +1,6 @@
 package pl.edu.amu.wmi.daut.base;
 
 import java.util.List;
-import java.lang.String;
 /**
  * Klasa abstrakcyjna reprezentująca specyfikację (opis) automatu
  * (jakie są stany, przejścia, który stan jest stanem początkowym,
