@@ -1,6 +1,7 @@
 package pl.edu.amu.wmi.daut.base;
 
 import java.util.List;
+import java.lang.String;
 /**
  * Klasa abstrakcyjna reprezentująca specyfikację (opis) automatu
  * (jakie są stany, przejścia, który stan jest stanem początkowym,
@@ -64,11 +65,11 @@ abstract class AutomatonSpecification {
      */
     public abstract boolean isFinal(State state);
     
-    public boolean isFull(State state) {
-        for (State state : allStates) {
-            for (OutgoingTransition transition : allOutgoingTransitions(stan)) {
+    public boolean isFull(String alphabet) {
+        for (State state : allStates()) {
+            for (OutgoingTransition transition : allOutgoingTransitions(state)) {
                 for (int i = 0; i<=alphabet.length(); i++) {
-                    if (transition.TransitionLabel != alphabet[i])
+                    if (!transition.getTransitionLabel().canAcceptCharacter(alphabet.charAt(i)))
                     {
                         return false;
                     }
