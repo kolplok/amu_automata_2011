@@ -68,7 +68,8 @@ abstract class AutomatonSpecification {
         for (State state : allStates()) {
             for (OutgoingTransition transition : allOutgoingTransitions(state)) {
                 for (int i = 0; i<=alphabet.length(); i++) {
-                    if (!transition.getTransitionLabel().canAcceptCharacter(alphabet.charAt(i))) {
+                    if (!transition.getTransitionLabel().canAcceptCharacter(alphabet.charAt(i)))
+                    {
                         return false;
                     }
                 }
