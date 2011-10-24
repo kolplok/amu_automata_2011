@@ -11,7 +11,7 @@ public class TestNaiveAutomatonSpecification extends TestCase {
     /**
      * Prosta etykieta przejścia dla celów testowych.
      */
-    private static class TestTransition implements TransitionLabel {
+    private static class TestTransition extends TransitionLabel {
         /**
          * Konstruuje etykietę oznaczoną znakiem 'c'.
          */
@@ -27,8 +27,16 @@ public class TestNaiveAutomatonSpecification extends TestCase {
             return c == ch_;
         }
 
+        public boolean isEmpty() {
+            return false;
+        }
+
         public char getChar() {
             return ch_;
+        }
+
+        protected TransitionLabel intersectWith(TransitionLabel label) {
+            return label.canAcceptCharacter(ch_) ? this : new EmptyTransitionLabel();
         }
 
         private char ch_;
@@ -91,5 +99,26 @@ public class TestNaiveAutomatonSpecification extends TestCase {
         List<State> states = spec.allStates();
 
         assertEquals(states.size(), 3);
+    }
+
+    /**
+     * Prosty test wyznaczania przecięcia.
+     */
+    public final void testIntersections() {
+        TestTransition tA1 = new TestTransition('a');
+        TestTransition tA2 = new TestTransition('a');
+        TestTransition tB = new TestTransition('b');
+        EmptyTransitionLabel emptyTransition = new EmptyTransitionLabel();
+
+        TransitionLabel intersectedA = tA1.intersect(tA2);
+        assertFalse(intersectedA.isEmpty());
+        assertTrue(intersectedA.canAcceptCharacter('a'));
+        assertFalse(intersectedA.canAcceptCharacter('b'));
+
+        assertTrue(tA1.intersect(tB).isEmpty());
+        assertTrue(tB.intersect(tA1).isEmpty());
+        assertTrue(emptyTransition.intersect(tA1).isEmpty());
+        assertTrue(tA1.intersect(emptyTransition).isEmpty());
+        assertTrue(emptyTransition.intersect(emptyTransition).isEmpty());
     }
 }

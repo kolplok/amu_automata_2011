@@ -75,7 +75,7 @@ abstract class AutomatonSpecification {
                 }
             }
         }
-        return true; 
+        return true;
         
     }
 };

@@ -7,19 +7,19 @@ package pl.edu.amu.wmi.daut.base;
  * Stan źródłowy nie jest tu uwzględniany.
  */
 class OutgoingTransition {
-    public OutgoingTransition(TransitionLabel transitionLabel, State targetState) {
-        targetState_ = targetState;
-        transitionLabel_ = transitionLabel;
+    public OutgoingTransition(TransitionLabel aTransitionLabel, State aTargetState) {
+        targetState = aTargetState;
+        transitionLabel = aTransitionLabel;
     }
 
     public State getTargetState() {
-        return targetState_;
+        return targetState;
     }
 
     public TransitionLabel getTransitionLabel() {
-        return transitionLabel_;
+        return transitionLabel;
     }
 
-    private State targetState_;
-    private TransitionLabel transitionLabel_;
+    private State targetState;
+    private TransitionLabel transitionLabel;
 }
